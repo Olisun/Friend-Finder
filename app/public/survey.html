@@ -21,7 +21,7 @@
     <div class="container">
       <h2><strong>Survey Questions</strong></h2>
       <hr>
-      <form method="POST" role="form">
+      <form method="POST" role="form" class="needs-validation" novalidate>
         <h3><strong>About You</strong></h3>
         <div class="form-group">
           <label for="exampleFormControlInput1"><h4>Name (Required)</h4></label>
@@ -146,19 +146,64 @@
         </div>
       </form>
       <button type="submit" class="btn btn-primary" id="survey-button">Submit</button>
+      <hr>
+      <footer class="footer">
+        <div class="container">
+          <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Olisun/Friend-Finder">Github Repo</a>
+        </div>
+      </footer>
     </div>
 
     <script>
-      var typed = new Typed('#typed', {
-        stringsElement: '#typed-strings',
-        typeSpeed: 60,
-        backSpeed: 10,
-        startDelay: 250,
-        loop: true,
+      // Function for the app to run after the user clicks the submit button. 
+      $('#survey-button').on('click', function() {
+        // Disabling the default action of the form which must clears it. 
+        event.preventDefault();
+        // Creating an object to store the user's info from the survey. 
+        var newUserData = {
+          name: $('#name').val().trim(),
+          photo: $('#photo').val().trim(),
+          scores: [
+            $('#question-1').val(),
+            $('#question-2').val(),
+            $('#question-3').val(),
+            $('#question-4').val(),
+            $('#question-5').val(),
+            $('#question-6').val(),
+            $('#question-7').val(),
+            $('#question-8').val(),
+            $('#question-9').val(),
+            $('#question-10').val()
+          ]
+        };
+        alert('Finding your new best friend!');
+        //
+        $.post('/api/friends', newUserData, function(data) {
+          console.log(data);
+          $('#newBff').text(data.name);
+          $('#newBffImage').attr('src', data.photo);
+          $('#newBffModal').modal('show');
+        });
+        // This clears the form after the user hits the survey button. 
+        $('#name').val('');
+        $('#photo').val('');
+        $('#question-1').val('');
+        $('#question-2').val('');
+        $('#question-3').val('');
+        $('#question-4').val('');
+        $('#question-5').val('');
+        $('#question-6').val('');
+        $('#question-7').val('');
+        $('#question-8').val('');
+        $('#question-9').val('');
+        $('#question-10').val('')
       });
     </script>
 
+
+    <script type="text/javascript" src="../miscJavaScript/effects.js"></script>
     <script src="granim.min.js"></script>
+
   </body>
 
 </html>

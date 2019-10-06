@@ -16,30 +16,32 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- my CSS -->
+  <link rel="stylesheet" href="./css/style.css">
 
   <body>
 
+
     <div class="container">
       <div class="jumbotron">
-        <h1 class="display-4">Friend Finder</h1>
-        <p class="lead">Answer a few basic questions</p>
-        <hr class="my-4">
-        <p>Then find your new friend.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Go to
-              Survey</a>
+        <div class="">
+          <h1 id="title">Friend Finder</h1>
+          <div id="typed-strings">
+            <p id="type" class="lead" style="font-size: 13px;">Answer a few basic questions. Then see your new best friend!</p>
+          </div>
+          <span id="typed"></span>
+        </div>
+        <hr>
+        <a class="btn btn-primary btn-lg" href="survey.html" role="button">Go to Survey</a>
       </div>
     </div>
 
-    <script>
-      var typed = new Typed('#typed', {
-        stringsElement: '#typed-strings',
-        typeSpeed: 60,
-        backSpeed: 10,
-        startDelay: 250,
-        loop: true,
-      });
-    </script>
 
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Olisun/Friend-Finder">Github Repo</a>
+      </div>
+    </footer>
+    <script type="text/javascript" src="../miscJavaScript/effects.js"></script>
     <script src="granim.min.js"></script>
   </body>
 
