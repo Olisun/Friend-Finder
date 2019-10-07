@@ -72,15 +72,38 @@ In this activity, we were tasked in building a compatibility-based "FriendFinder
   * Typed.js (for index.html jumbotron affect).
 
 ## Methodology:
+I followed closely the class activities in Star Wars and Hot New Restaurant. They helped guide me espeically in setting up the routes. 
 
+For the logic in comparing user's scores against the data in the friends file, I created a nested for loop. The outer loop looped over the all the objects in the friends db while the inner loop looped over each of those objects' arrays of scores. While doing the inner-loop, the code finds the absolute value difference between each array in the friends db against the user's scores array and adds each total ABV to a counter. Each counter score is them compared against the one before it and the counter score with the lowest absolute value difference becomes the user's new BFF.
 
 ## Problems That I Overcame:
 
-
+One problem was getting the user data from the survey into the friends db. I overcame this by using request.body after going through npm body-parser's docs.
 ## Problems Still Facing:
 
 
 ## Code Snippets:
+Logic for comparing the user's scores array against all the fixedData arrays.
+```
+var bffIndex = 0;
+    var defaultBeta = 100;
+    // First for-loop loops over all the arrays in friends. 
+    for (var i = 0; i < fixedData.length; i++) {
+      console.log(fixedData[i].scores);
+      // Setting a counter equal to 0. 
+      var accumulator = 0;
+      // Second four-loop compares the absolute difference in scores between every array in friends vs. the user's score and added the total difference to the accumulator. 
+      for (var j = 0; j < fixedData[i].scores.length; j++) {
+        var beta = (Math.abs(surveyScores[j] - fixedData[i].scores[j]));
+        accumulator += beta;
+      };
+      // If the accumulator score is less than the default beta, which it always will be, the the default beta becomes the accumulator. Basucally this sets up the comparison loop to go from one friend to the other comparing against the user's score. 
+      if (accumulator < defaultBeta) {
+        bffIndex = i;
+        defaultBeta = accumulator;
+      };
+    };
+```
 
 
 ## Link to my Portfolio Page on Github where this app is listed in the portfolio section.
