@@ -160,21 +160,22 @@
       </footer>
     </div>
 
-    <div class="modal" id="newBffModal" tabindex="-1" role="dialog">
+    <!-- Modal -->
+    <div class="modal fade" id="newBffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="newBff">Here's your new BFF!</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Here's your new BFF!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <span aria-hidden="true">&times;</span>
+          </button>
           </div>
           <div class="modal-body">
-            <img src="" alt="" id="newBffImage">
+            <h4 id="newBff"></h4>
+            <img src="#" id="newBffImage">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</
         </div>
       </div>
     </div>
@@ -184,26 +185,11 @@
       $('#survey-button').on('click', function() {
         // Disabling the default action of the form which must clears it. 
         event.preventDefault();
-        // Form validation. 
-        function validate() {
-          var surveyComplete = false;
-          $('.form-control').each(function(index, value) {
-            console.log(index + value)
-              // For name and photo link. 
-            if ($(this).val() === '') {
-              surveyComplete = true;
-            } else {
-              alert('Please fill out all fields.');
-            };
-            // For the survey part. 
-            if ($(this).val() === '') {
-              surveyComplete = true;
-            } else {
-              alert('Please answer all survey questions.')
-            };
-          });
-        };
-        // Creating an object to store the user's info from the survey. 
+        // Form validation. Setting initial (blank) form to false. 
+        var surveyComplete = false;
+        // Grabbing all form elements with a class of 'form-control' and applying jQuery's each method. 
+
+
         var newUserData = {
           name: $('#name').val().trim(),
           photo: $('#photo').val().trim(),
@@ -222,11 +208,13 @@
         };
         alert('Finding your new best friend!');
         //
+        var currentURL = window.location.origin;
+        
         $.post('/api/friends', newUserData, function(data) {
           console.log(data);
           $('#newBff').text(data.name);
           $('#newBffImage').attr('src', data.photo);
-          $('#newBffModal').modal('show');
+          $('#newBffModal').modal('toggle');
         });
         // This clears the form after the user hits the survey button. 
         $('#name').val('');
@@ -241,6 +229,7 @@
         $('#question-8').val('');
         $('#question-9').val('');
         $('#question-10').val('')
+
       });
     </script>
 

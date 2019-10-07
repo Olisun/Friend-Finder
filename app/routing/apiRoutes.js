@@ -19,8 +19,9 @@ module.exports = function(app) {
     };
 
     console.log(surveyScores);
-    // Setting the index value and the defaultBeta value as starting points. 
-    var index = 0;
+    console.log(surveyScores[4]);
+    // Setting the bffIndex value and the defaultBeta value as starting points. 
+    var bffIndex = 0;
     var defaultBeta = 100;
 
 
@@ -32,15 +33,17 @@ module.exports = function(app) {
         var beta = (Math.abs(surveyScores[j] - fixedData[i].scores[j]));
         defaultBeta += beta;
       };
+      if (beta < defaultBeta) {
+        bffIndex = i;
+        defaultBeta = beta;
+      };
     };
-    //
-    if (beta < defaultBeta) {
-      index = i;
-      defaultBeta = beta;
-    }
     //
     fixedData.push(request.body);
     //
-    response.json(fixedData[index])
+    var yourNewBff = fixedData[bffIndex];
+    console.log(yourNewBff);
+
+    response.json(yourNewBff);
   })
 }
