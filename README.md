@@ -10,8 +10,12 @@ Node and Express Servers
 ## Link to full app demo on Heroku:
 https://bestie-finder.herokuapp.com/
 
-
 ## User Guide:
+1. Click the go to survey button.
+2. Enter your name.
+3. Enter a link to your photo (Github, Linkedin or Facebook for example).
+4. Answer all 10 survey questions.
+5. See your new BFF!
 
 
 ## About the project:
@@ -63,9 +67,10 @@ In this activity, we were tasked in building a compatibility-based "FriendFinder
 
 7. When the current user's most compatible friend is determined, the result is displayed as a modal pop-up. The modal displays both the name and picture of the closest match.
 
-## Stretch Goals
+## Stretch Goals:
+* Working on form validation
+* Will try to make the matching algo weighted for certain questions
   
-
 ## Techology Stack:
   * Node.js
   * JavaScript
@@ -73,20 +78,21 @@ In this activity, we were tasked in building a compatibility-based "FriendFinder
   * npm body-parser
   * npm path
   * Heroku
-  * Typed.js (for index.html jumbotron affect).
 
 ## Methodology:
-I followed closely the class activities in Star Wars and Hot New Restaurant. They helped guide me espeically in setting up the routes. 
+I followed closely the class activities in Star Wars and Hot New Restaurant. They helped guide me especially in setting up the routes. 
 
-For the logic in comparing user's scores against the data in the friends file, I created a nested for loop. The outer loop looped over the all the objects in the friends db while the inner loop looped over each of those objects' arrays of scores. While doing the inner-loop, the code finds the absolute value difference between each array in the friends db against the user's scores array and adds each total ABV to a counter. Each counter score is them compared against the one before it and the counter score with the lowest absolute value difference becomes the user's new BFF.
+For the logic in comparing user's scores against the data in the friends file, I created a nested for-loop. The outer loop looped over the all the objects in the friends db while the inner loop looped over each of those objects' arrays of scores. While doing the inner-loop, the code finds the absolute value difference between each array in the friends db against the user's scores array and adds each total to a counter (accumulator). Each accumulator score is them compared against the one before it and the counter score with the lowest absolute value difference becomes the user's new BFF. The algo resets for each user (details in the code snippit below).
 
 ## Problems That I Overcame:
 
-One problem was getting the user data from the survey into the friends db. I overcame this by using request.body after going through npm body-parser's docs.
+One problem was getting the user data from the survey into the friends db properly. I overcame this by using request.body and request.body.scores after going through npm body-parser's docs.
 
-I also experienced many bugs with regareds to the code for comparing the user scores with the scores of the fixed data in friends. Initially, my code was trying to compare the user scores array against the entire array of fixed data as opposed to each of the fixed data scores arrays. I solved this by implement a nested for-loop. The details are below in code snippets.
+I also experienced many bugs with regards to the code for comparing the user scores with the scores of the fixed data in friends. Initially, my code was trying to compare the user scores array against the entire array of fixed data as opposed to each of the fixed data scores arrays. I solved this by implement a nested for-loop. The details are below in code snippets.
 
 ## Problems Still Facing:
+
+Form validation. Trying to implement a method where the user is notified if she doesn't answer all of thje questions.
 
 
 ## Code Snippets:
