@@ -7,7 +7,7 @@ var path = require('path');
 var app = express();
 
 // Setting an initial port. 
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 // Setting up the express app to handle static data. 
 app.use(express.static(__dirname + '/app/public'));

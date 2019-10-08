@@ -79,6 +79,9 @@ For the logic in comparing user's scores against the data in the friends file, I
 ## Problems That I Overcame:
 
 One problem was getting the user data from the survey into the friends db. I overcame this by using request.body after going through npm body-parser's docs.
+
+I also experienced many bugs with regareds to the code for comparing the user scores with the scores of the fixed data in friends. Initially, my code was trying to compare the user scores array against the entire array of fixed data as opposed to each of the fixed data scores arrays. I solved this by implement a nested for-loop. The details are below in code snippets.
+
 ## Problems Still Facing:
 
 
