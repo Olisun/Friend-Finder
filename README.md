@@ -1,10 +1,14 @@
 # Friend-Finder
 Node and Express Servers
 
-## Screen Shot of App Cycle:
-![](images/screen-shot.png)
+## Screen Shots:
+![](app/public/images/screen-shot-1.png)
+![](app/public/images/screen-shot-2.png)
+![](app/public/images/screen-shot-3.png)
+![](app/public/images/screen-shot-4.png)
 
-## Link to full app demo on Github Pages:
+## Link to full app demo on Heroku:
+https://bestie-finder.herokuapp.com/
 
 
 ## User Guide:
