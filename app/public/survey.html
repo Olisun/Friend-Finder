@@ -160,7 +160,6 @@
     </div>
 
     <!-- Modal -->
-    <!-- <div class="modal fade" id="newBffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
     <div id="newBffModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -169,12 +168,10 @@
             </button>
             <h3 class="modal-title">Here's your new BFF!</h3>
           </div>
-
           <div class="modal-body">
             <h4 id="newBff"></h4>
             <img id="newBffImage" src="#" style="width: 300px;">
           </div>
-
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</
         </div>
@@ -188,11 +185,7 @@
       $('#survey-button').on('click', function() {
         // Disabling the default action of the form which must clears it. 
         event.preventDefault();
-        // Form validation. Setting initial (blank) form to false. 
-        var surveyComplete = false;
         // Grabbing all form elements with a class of 'form-control' and applying jQuery's each method. 
-
-
         var newUserData = {
           name: $('#name').val().trim(),
           photo: $('#photo').val().trim(),
@@ -210,9 +203,9 @@
           ]
         };
         alert('Finding your new best friend!');
-        //
-        var currentURL = window.location.origin;
         
+        // This posts the data sent bac from apiRoutes and appends it to the modal. 
+        var currentURL = window.location.origin;
         $.post(currentURL + '/api/friends', newUserData, function(data) {
           console.log(data);
           $('#newBff').text(data.name);

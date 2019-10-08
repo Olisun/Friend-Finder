@@ -92,8 +92,7 @@ I also experienced many bugs with regards to the code for comparing the user sco
 
 ## Problems Still Facing:
 
-Form validation. Trying to implement a method where the user is notified if she doesn't answer all of thje questions.
-
+Form validation. Trying to implement a method where the user is notified if she doesn't answer all of the questions.
 
 ## Code Snippets:
 Logic for comparing the user's scores array against all the fixedData arrays.
